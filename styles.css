@@ -1,3 +1,8 @@
+1*
+{
+  border: 1px solid black;
+}
+
 title
 {
   width: 80%;
@@ -8,49 +13,77 @@ title
 body
 {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 1px;
+  left: 1px;
   width: 99%;
   height: 99%;
+}
+
+label
+{
+  padding-top: 2%;
+  color: yellow;
+  display: block;
+}
+
+select
+{
+  display: block;
+  padding: 15px;
+  margin-top: 1%;
+}
+
+input
+{
+  display: block;
+  padding: 15px;
+  margin-top: 1%;
 }
 
 #settings
 {
   position: relative;
-  width: 90%;
+  top: 0px;
+  left: 1%;
+  width: 98%;
   height: 40%;
-  clear: both;
   background-color: lightgray;
 }
 
 #controls
 {
   position: relative;
-  border: 1px solid blue;
-  width: 45%;
-  height: 90%;
-  background-color: yellow;
+  top: 1%;
+  left: 1%;
+  width: 49%;
+  height: 98%;
 }
 
 #values
 {
+  float: right;
   position: relative;
-  border: 1px solid red;
-  width: 45%;
-  heights: 90%;
-  background-color: gray;
+  top: 1%;
+  right: 1%;
+  width: 49%;
+  height: 90%;
 }
 
 #valuelist
 {
-  width: 90%;
-  height: 50%;
+  position: relative;
+  top: 2%;
+  width: 100%;
+  height: 90%;
   color: red;
 }
 
-#protocoll
+#protocol
 {
   position: relative;
-  width: 100%;
-  height: 58%;
+  top: 0%;
+  left: 1%;
+  width: 98%;
+  height: 54%;
+  background-color: blue;
 }

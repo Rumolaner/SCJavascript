@@ -8,6 +8,10 @@
   <body>
     <h1>Standard Codes Javascript</h1>
     <div id="settings">
+      <div id="values">
+        <label for="valuelist">Werteliste</label>
+        <textarea name="valuelist" id="valuelist"></textarea>
+      </div>
       <div id="controls">
         <label for="sortalgo">Sortieralgorithmus</label> 
         <select id="sortalgo">
@@ -23,10 +27,10 @@
         </select>
         <label for="searchvalue">Suchwert</label>
         <input type="text" id="suchwert" name="suchwert" placeholder="0">
-      </div>
-      <div id="values">
-        <label for="valuelist">Werteliste</div>
-        <textarea name="valuelist" id="valuelist"></textarea>
+        <div id="buttons">
+          <button id="btnClear">Leeren</button>
+          <button id="btnPerform">Ausf&uuml;hren</button>
+        </div>
       </div>
     </div>
     <div id="protocol">Kein Protokoll</div>
