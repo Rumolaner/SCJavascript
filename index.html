@@ -1,8 +1,8 @@
-<html>
+<!DOCTYPE html>
   <head>
     <title>Standard Codes Javascript</title>
-    <script src="SCJSsort.js"></script>
-    <script src="SCJSsearch.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -26,10 +26,11 @@
           <option value="search2">Binary Search</option>
         </select>
         <label for="searchvalue">Suchwert</label>
-        <input type="text" id="suchwert" name="suchwert" placeholder="0">
+        <input type="number" id="searchvalue" name="searchvalue" placeholder="0">
         <div id="buttons">
-          <button id="btnClear">Leeren</button>
-          <button id="btnPerform">Ausf&uuml;hren</button>
+          <button id="btnSetStandard" onClick="setStandard()">Vordef. Werte setzen</button>
+          <button id="btnClear" onClick="clearAll()">Leeren</button>
+          <button id="btnPerform" onClick="perform()">Ausf&uuml;hren</button>
         </div>
       </div>
     </div>
