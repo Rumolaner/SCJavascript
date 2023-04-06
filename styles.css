@@ -92,5 +92,6 @@ button
   left: 1%;
   width: 98%;
   height: 54%;
-  background-color: blue;
+  background-color: silver;
+  overflow-y: scroll;
 }
