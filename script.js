@@ -87,6 +87,7 @@ function perform() {
       aList = SortOptBubble(aList);
     } else {
       writeProtocol("Unbekannter Sortieralgorithmus");
+      sortAlgo = "";
     }
     writeProtocol("Beende Sortieren");
     writeProtocol("Sortierergebnis: " + valuesToString(aList));
@@ -98,6 +99,13 @@ function perform() {
     if (searchAlgo == "search1"){
       //Linear Search
       result = SearchLinear(aList, searchvalue);
+    } else if (searchAlgo == "search2") {
+      //Binary Search
+      if (sortAlgo == "") {
+        writeProtocol("Binary Search ben&ouml;tigt eine sortiere Werteliste. Bitte einen Sortieralgorithmus w&auml;hlen");
+      } else {
+        result = SearchBinary(aList, searchvalue);
+      }
     } else {
       writeProtocol("Unbekannter Suchalgorithmus");
     }
@@ -161,6 +169,32 @@ function SearchLinear(aLists, value){
       result = i;
       break;
     }
+  }
+
+  return result;
+}
+
+function SearchBinary(aList, value){
+  let result = -1;
+  let min = 0;
+  let max = aList.length - 1;
+  let counter = 1;
+  while (result == -1 && min <= max){
+    writeProtocol("Loop no: " + counter.toString());
+    let mid = Math.floor(min + ((max - min) / 2));
+    writeProtocol("Mid: " + mid + "/" + aList[mid]);
+    if (aList[mid] == value){
+      result = mid;
+    }
+    if (aList[mid] < value){
+      writeProtocol("Min = mid");
+      min = mid;
+    } else {
+      writeProtocol("Max = mid");
+      max = mid;
+    }
+    counter ++;
+
   }
 
   return result;
