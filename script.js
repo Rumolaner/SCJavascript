@@ -93,6 +93,9 @@ function perform() {
     } else if (sortAlgo == "sort4") {
       //Merge Sort
       aList = SortMerge(aList);
+    } else if (sortAlgo == "sort5") {
+      //Insertion Sort
+      aList = SortInsert(aList);
     } else {
       writeProtocol("Unbekannter Sortieralgorithmus");
       sortAlgo = "";
@@ -223,6 +226,12 @@ function SortMerge(aList) {
   }
 
   return ret;
+}
+
+function SortInsert(aList) {
+  
+
+  return aList;
 }
 
 function SearchLinear(aLists, value){
