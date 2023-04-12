@@ -29,6 +29,8 @@ function valuesToArray(list){
   for (let i=0; i<aList.length; i++) {
     if (isNaN(aList[i])){
       aList[i] = 0;
+    } else {
+      aList[i] = Number(aList[i]);
     }
   }
 
@@ -113,7 +115,7 @@ function perform() {
     if (result == -1){
       writeProtocol("Suchwert nicht gefunden");
     } else {
-      writeProtocol("Suchwert gefunden an :" + result.toString());
+      writeProtocol("Suchwert gefunden bei Index :" + result.toString());
     }
   }
 }
