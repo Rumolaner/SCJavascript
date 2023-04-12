@@ -87,6 +87,9 @@ function perform() {
     } else if(sortAlgo == "sort2"){
       //opt. Bubble Sort
       aList = SortOptBubble(aList);
+    } else if (sortAlgo == "sort3") {
+      //Selection Sort
+      aList = SortSelect(aList);
     } else {
       writeProtocol("Unbekannter Sortieralgorithmus");
       sortAlgo = "";
@@ -156,6 +159,29 @@ function SortOptBubble(aList) {
     }
     if (swapped == false){
       break;
+    }
+  }
+
+  return aList;
+}
+
+function SortSelect(aList) {
+  writeProtocol("Starte outer loop");
+  for (i = 0; i < aList.length - 1; i++) {
+    let biggest = i;
+    writeProtocol("Outer loop no: " + i.toString());
+    writeProtocol("Starte inner loop");
+    for (j = i + 1; j < aList.length; j++) {
+      if (aList[biggest] < aList[j]) {
+        writeProtocol("New biggest number");
+        biggest = j
+      }
+    }
+
+    if (aList[biggest] > aList[i]) {
+      let temp = aList[i];
+      aList[i] = aList[biggest];
+      aList[biggest] = temp;
     }
   }
 
