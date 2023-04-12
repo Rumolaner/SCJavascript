@@ -90,6 +90,9 @@ function perform() {
     } else if (sortAlgo == "sort3") {
       //Selection Sort
       aList = SortSelect(aList);
+    } else if (sortAlgo == "sort4") {
+      //Merge Sort
+      aList = SortMerge(aList);
     } else {
       writeProtocol("Unbekannter Sortieralgorithmus");
       sortAlgo = "";
@@ -186,6 +189,40 @@ function SortSelect(aList) {
   }
 
   return aList;
+}
+
+function SortMerge(aList) {
+  let ret = Array();
+  if (aList.length < 2) {
+    return aList;
+  }
+
+  let left = aList.slice(0, Math.floor(aList.length / 2));
+  let right = aList.slice(Math.floor(aList.length / 2), aList.length);
+  left = SortMerge(left);
+  right = SortMerge(right);
+
+  while (left.length > 0 && right.length > 0) {
+    if (left[0] > right[0]) {
+      ret.push(left[0]);
+      left.shift();
+    } else {
+      ret.push(right[0]);
+      right.shift();
+    }
+  }
+
+  while (left.length > 0) {
+    ret.push(left[0]);
+    left.shift();
+  }
+
+  while (right.length > 0) {
+    ret.push(right[0]);
+    right.shift();
+  }
+
+  return ret;
 }
 
 function SearchLinear(aLists, value){
