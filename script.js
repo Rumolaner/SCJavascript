@@ -229,7 +229,21 @@ function SortMerge(aList) {
 }
 
 function SortInsert(aList) {
-  
+  writeProtocol("Starte outer loop");
+  for(i = 0; i < aList.length-1; i++) {
+    writeProtocol("Outer loop: " + (i + 1).toString());
+    writeProtocol("Starte inner loop");
+    for(j = i + 1; j >= 0;  j--) {
+      writeProtocol("Inner loop: " + (i+1-j).toString());
+      if (aList[j] > aList[j-1]) {
+        writeProtocol("Tausche " + (j).toString() + " mit " + (j-1).toString() );
+
+        let temp = aList[j];
+        aList[j] = aList[j-1];
+        aList[j-1] = temp;
+      }
+    }
+  }
 
   return aList;
 }
