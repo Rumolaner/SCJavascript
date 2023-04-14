@@ -96,6 +96,15 @@ function perform() {
     } else if (sortAlgo == "sort5") {
       //Insertion Sort
       aList = SortInsert(aList);
+    } else if (sortAlgo == "sort6") {
+      //Heap Sort
+      aList = SortHeap(aList);
+    } else if (sortAlgo == "sort7") {
+      //Quick Sort
+      aList = SortQuick(aList);
+    } else if (sortAlgo == "sort8") {
+      //Binary Tree Sort
+      aList = SortTree(aList);
     } else {
       writeProtocol("Unbekannter Sortieralgorithmus");
       sortAlgo = "";
@@ -245,6 +254,18 @@ function SortInsert(aList) {
     }
   }
 
+  return aList;
+}
+
+function SortHeap(aList) {
+  return aList;
+}
+
+function SortQuick(aList) {
+  return aList;
+}
+
+function SortTree(aList) {
   return aList;
 }
 
