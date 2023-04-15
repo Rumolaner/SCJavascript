@@ -258,53 +258,14 @@ function SortInsert(aList) {
 }
 
 function Heapify(aList, start, stop){
-  let parent = Math.floor((stop-1) / 2);
-  writeProtocol("start Heapify");
-  writeProtocol("Start: " + start.toString());
-  writeProtocol("Stop: " + stop.toString());
-  writeProtocol("Parent: " + parent.toString());
+  writeProtocol("Starte heapify");
 
-  for (let i = parent; i >= start; i-- ) {
-    writeProtocol("start Heapify f&uuml;r parent: " + i.toString());
-    let lChild = i * 2 + 1;
-    let rChild = i * 2 + 2;
-    writeProtocol("lChild: " + lChild.toString());
-    writeProtocol("rChild: " + rChild.toString());
-
-    if (rChild <= stop && aList[rChild] > aList[lChild]) {
-      writeProtocol("Setze rChild als biggest");
-      biggest = rChild
-    } else {
-      writeProtocol("Setze lChild als biggest");
-      biggest = lChild;
-    }
-    writeProtocol("biggest: " + biggest + "/" + aList[biggest]);
-
-    if (aList[biggest] > aList[i]) {
-      writeProtocol("tausche parent und biggest Child");
-
-      let temp = aList[i];
-      aList[i] = aList[biggest];
-      aList[biggest] = temp;
-      aList = Heapify(aList, biggest, stop);
-    }
-  }
-
-  return aList;
 }
 
 function SortHeap(aList) {
-  writeProtocol("Initial Heapify");
-  aList = Heapify(aList, 0, aList.length-1);
+  writeProtocol("Starte Initialisierung des Heap");
 
-  for (let i = aList.length-1; i > 0; i--) {
-    writeProtocol("Setze H&ouml;chsten Wert an Stelle " + (i+1).toString() + ": " + aList[0]);
-    let temp = aList[i];
-    aList[i] = aList[0];
-    aList[0] = temp;
-    Heapify(aList, 0, i-1);
-  }
-
+  
   return aList;
 }
 
