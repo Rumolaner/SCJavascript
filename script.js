@@ -312,8 +312,71 @@ function SortQuick(aList) {
   return aList;
 }
 
+class STNode {
+//  let value;
+//  let smaller;
+//  let bigger;
+
+  constructor(value){
+    this.value = value;
+    this.smaller = null;
+    this.bigger = null;
+  }
+
+  insert(value) {
+    if (value <= this.value){
+      writeProtocol("new value is smaller");
+      if (this.smaller == null){
+        writeProtocol("Create new node");
+        this.smaller = new STNode(value);
+      } else {
+        writeProtocol("pass value to existing value");
+        this.smaller.insert(value);
+      }
+    } else {
+      writeProtocol("new value is bigger");
+      if (this.bigger == null){
+        writeProtocol("Create new node");
+        this.bigger = new STNode(value);
+      } else {
+        writeProtocol("pass value to existing node");
+        this.bigger.insert(value);
+      }
+    }
+  }
+
+  traverse() {
+    let retList = Array();
+
+    if (this.smaller != null) {
+      writeProtocol("Adding smaller values");
+      retList = this.smaller.traverse();
+    }
+
+    writeProtocol("Adding local value:" + this.value.toString());
+    retList.push(this.value);
+
+    if (this.bigger != null) {
+      writeProtocol("Adding bigger values");
+      retList.push.apply(retList, this.bigger.traverse());
+    }
+
+    return retList;
+  }
+}
+
 function SortTree(aList) {
-  return aList;
+  writeProtocol("Create tree root with value " + aList[0].toString());
+  let node = new STNode(aList[0]);
+
+  for (i = 1; i < aList.length; i++) {
+    writeProtocol("Add new value " + aList[i].toString());
+    node.insert(aList[i]);
+  }
+
+  writeProtocol("Start to traverse");
+  let aList1 = node.traverse();
+  return aList1;
 }
 
 function SearchLinear(aLists, value){
