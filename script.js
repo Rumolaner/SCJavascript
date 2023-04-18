@@ -308,7 +308,40 @@ function SortHeap(aList) {
   return aList;
 }
 
-function SortQuick(aList) {
+function QSTeile(aList, start, end) {
+  let pivot = aList[end];
+  writeProtocol("Pivot: " + pivot.toString());
+
+  let i = start;
+  let j = end;
+
+  while (i < j) {
+    while (i < j && aList[i] < pivot) {
+      i ++;
+    }
+
+    while (i < j && aList[j] > pivot) {
+      j--;
+    }
+
+    if (aList[i] > aList[j]) {
+      let temp = aList[i];
+      aList[i] = aList[j];
+      aList[j] = temp;
+    }
+  }
+}
+
+function SortQuick(aList, start = 0, end = -1) {
+  if (end == -1){
+    end = aList.length - 1;
+  }
+
+  writeProtocol("New interval");
+  writeProtocol("Start: " + start.toString());
+  writeProtocol("End: " + end.toString());
+
+
   return aList;
 }
 
