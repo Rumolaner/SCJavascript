@@ -126,6 +126,13 @@ function perform() {
       } else {
         result = SearchBinary(aList, searchvalue);
       }
+    } else if (searchAlgo == "search3") {
+      //Interpolation Search
+      if (sortAlgo == "") {
+        writeProtocol("Interpolation Search ben&ouml;tigt eine sortiere Werteliste. Bitte einen Sortieralgorithmus w&auml;hlen");
+      } else {
+        result = SearchInterpolation(aList, searchvalue);
+      }
     } else {
       writeProtocol("Unbekannter Suchalgorithmus");
     }
@@ -471,4 +478,8 @@ function SearchBinary(aList, value){
   }
 
   return result;
+}
+
+function SearchInterpolation(aList, value) {
+  return -1;
 }
