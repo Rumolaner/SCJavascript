@@ -310,26 +310,45 @@ function SortHeap(aList) {
 
 function QSTeile(aList, start, end) {
   let pivot = aList[end];
+  writeProtocol("Function QSTeiler start:" + start.toString());
+  writeProtocol("end: " + end.toString());
   writeProtocol("Pivot: " + pivot.toString());
 
   let i = start;
-  let j = end;
+  let j = end - 1;
 
   while (i < j) {
-    while (i < j && aList[i] < pivot) {
+    while (i < j && aList[i] <= pivot) {
       i ++;
     }
 
-    while (i < j && aList[j] > pivot) {
+    while (i < j && aList[j] >= pivot) {
       j--;
     }
 
+    writeProtocol("i: " + i.toString() + "/" + aList[i]);
+    writeProtocol("j: " + j.toString() + "/" + aList[j]);
+
     if (aList[i] > aList[j]) {
+      writeProtocol("change i and j");
+
       let temp = aList[i];
       aList[i] = aList[j];
       aList[j] = temp;
     }
   }
+
+  if (aList[i] > pivot) {
+    writeProtocol("value of i bigger than pivot i --> pivot: " + i.toString() + "/" + aList[i] + " --> " + pivot.toString() );
+    let temp = aList[i];
+    aList[i] = aList[end];
+    aList[end] = temp;
+  } else {
+    writeProtocol("value of i smaller than pivot i --> pivot: " + i.toString() + "/" + aList[i] + " --> " + pivot.toString() );
+    i = end;
+  }
+
+  return i;
 }
 
 function SortQuick(aList, start = 0, end = -1) {
@@ -337,19 +356,21 @@ function SortQuick(aList, start = 0, end = -1) {
     end = aList.length - 1;
   }
 
-  writeProtocol("New interval");
-  writeProtocol("Start: " + start.toString());
-  writeProtocol("End: " + end.toString());
+  if (start < end){
+    writeProtocol("New interval");
+    writeProtocol("Start: " + start.toString());
+    writeProtocol("End: " + end.toString());
+    let  teiler = QSTeile(aList, start, end);
+    writeProtocol("Teiler: " + teiler.toString());
 
+    aList = SortQuick(aList, start, teiler - 1);
+    aList = SortQuick(aList, teiler, end);
+  }
 
   return aList;
 }
 
 class STNode {
-//  let value;
-//  let smaller;
-//  let bigger;
-
   constructor(value){
     this.value = value;
     this.smaller = null;
