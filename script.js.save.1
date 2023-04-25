@@ -485,34 +485,10 @@ function SearchInterpolation(aList, value) {
 
   let start = 0;
   let end = aList.length - 1;
-  let pos = 0;
-  let counter = 0;
+  let check = -1;
 
-  while (start < end && aList[start] < value && aList[end] > value && counter < 10){
-    counter++;
-    writeProtocol("Start: " + start.toString());
-    writeProtocol("End: " + end.toString());
-    writeProtocol("End - Start: " + (end-start).toString());
-    writeProtocol("Search - List[start]: " + (value-aList[start]).toString());
-    writeProtocol("List[end] - List[start]): " + (aList[end] - aList[start]).toString());
-    pos = Math.floor(start + (end - start) * (value - aList[start]) / (aList[end] - aList[start]));
-
-    writeProtocol("Pos: " + pos.toString());
-    writeProtocol("Value Pos: " + aList[pos].toString());
-
-    if (aList[pos] == value){
-      return pos;
-    }
-
-    if (aList[pos] > value){
-      writeProtocol("Pos to big");
-      end = pos;
-    }
-
-    if (aList[pos] < value) {
-      writeProtocol("Pos to small");
-      start = pos;
-    }
+  while (start < end && aList[start] < value && aList[end] > value){
+    check = check + ();
   }
 
   return -1;
