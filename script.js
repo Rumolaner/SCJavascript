@@ -133,6 +133,12 @@ function perform() {
       } else {
         result = SearchInterpolation(aList, searchvalue);
       }
+    } else if (searchAlgo == "search4") {
+      //BFS
+      result = SearchBFS(aList, searchvalue);
+    } else if (searchAlgo == "search5") {
+      //DFS
+      result = SearchDFS(aList, searchvalue);
     } else {
       writeProtocol("Unbekannter Suchalgorithmus");
     }
@@ -514,6 +520,18 @@ function SearchInterpolation(aList, value) {
       start = pos;
     }
   }
+
+  return -1;
+}
+
+function SearchBFS(aList, value) {
+  writeProtocol("Preparing binary tree");
+
+  return -1;
+}
+
+function SearchDFS (aList, value) {
+  writeProtocol("Preparing binary tree");
 
   return -1;
 }
