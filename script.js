@@ -610,8 +610,33 @@ function SearchBFS(aList, value) {
   return -1;
 }
 
+function SearchDFSexecute(node, value) {
+  writeProtocol("Check node with value:" + node.value.toString());
+
+  node.visited = true;
+  if (node.value == value) {
+    writeProtocol("value found");
+
+    return 1;
+  } else {
+    for (let i = 0; i < node.neighbors.length; i++) {
+      writeProtocol("check neighbors");
+      if (!node.neighbors[i].visited) {
+        writeProtocol("check neighbor with value: " + node.neighbors[i].value.toString());
+        return SearchDFSexecute(node.neighbors[i], value);
+      }
+    }
+
+    return -1;
+  }
+}
+
 function SearchDFS (aList, value) {
   writeProtocol("Preparing binary tree");
+  let node1 = createTree(aList);
 
-  return -1;
+  let result = SearchDFSexecute(node1, value);
+  writeProtocol("result: " + result.toString());
+
+  return result;
 }
