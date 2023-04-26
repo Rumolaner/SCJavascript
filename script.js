@@ -524,8 +524,88 @@ function SearchInterpolation(aList, value) {
   return -1;
 }
 
+class FSNode {
+  constructor(value){
+    writeProtocol("Creating node with value: " + value);
+    this.value = value;
+    this.neighbors = Array();
+    this.visited = false;
+  }
+
+  AddNeighbor(neighbor){
+    writeProtocol("Adding node with value " + neighbor.value + " as neighbor to node with value " + this.value);
+
+    this.neighbors.push(neighbor);
+    neighbor.neighbors.push(this);
+  }
+}
+
+function createTree(aList) {
+  writeProtocol("Preparing binary tree");
+
+  if (aList.length >= 10) {
+    node1 = new FSNode(aList[0]);
+    node2 = new FSNode(aList[1]);
+    node3 = new FSNode(aList[2]);
+    node4 = new FSNode(aList[3]);
+    node5 = new FSNode(aList[4]);
+    node6 = new FSNode(aList[5]);
+    node7 = new FSNode(aList[6]);
+    node8 = new FSNode(aList[7]);
+    node9 = new FSNode(aList[8]);
+    node10 = new FSNode(aList[9]);
+
+    node1.AddNeighbor(node2);
+    node1.AddNeighbor(node3);
+    node1.AddNeighbor(node4);
+    node2.AddNeighbor(node5);
+    node2.AddNeighbor(node6);
+    node2.AddNeighbor(node7);
+    node3.AddNeighbor(node8);
+    node3.AddNeighbor(node9);
+    node4.AddNeighbor(node10);
+    node5.AddNeighbor(node9);
+    node5.AddNeighbor(node10);
+    node6.AddNeighbor(node3);
+    node7.AddNeighbor(node8);
+    node7.AddNeighbor(node9);
+    node7.AddNeighbor(node10);
+    node8.AddNeighbor(node9);
+
+    return node1;
+  } else {
+    writeProtocol("Not enough elements in list");
+    return null;
+  }
+
+
+}
+
 function SearchBFS(aList, value) {
   writeProtocol("Preparing binary tree");
+  let node1 = createTree(aList);
+  let toVisit = Array();
+
+  writeProtocol("setting node1 as first to visit");
+  toVisit.push(node1);
+
+  while (toVisit.length > 0) {
+    let node = toVisit[0];
+    writeProtocol("now working node with value " + node.value);
+
+    toVisit.shift();
+    node.visited = true;
+    for (i = 0; i < node.neighbors.length; i++) {
+      if (!node.neighbors[i].visited) {
+        writeProtocol("Adding node with value " + node.neighbors[i].value + " to toVisit");
+        toVisit.push(node.neighbors[i]);
+      }
+    }
+    if (node.value == value){
+      writeProtocol("value found");
+      return 1;
+    }
+  }
 
   return -1;
 }
